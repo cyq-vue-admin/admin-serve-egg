@@ -16,9 +16,9 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_1658219348179_3462';
 
   // add your middleware config here
-  // config.middleware = [
-  //   'errorHandler',
-  // ];
+  config.middleware = [
+    'errorHandler',
+  ];
 
   // add your user config here
   const userConfig = {
@@ -35,7 +35,7 @@ module.exports = appInfo => {
 
 
   config.cors = {
-    // origin: [ 'http://localhost:3000', 'http://127.0.0.1:3000' ], // 跨任何域
+    origin: [ 'http://localhost:8080' ], // 跨任何域
     credentials: true, // 开启认证
     allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS', // 被允许的请求方式
   };
@@ -58,7 +58,7 @@ module.exports = appInfo => {
     csrf: {
       enable: false,
     },
-    domainWhiteList: [ 'http://127.0.0.1:3000', 'http://120.48.74.178:7002' ],
+    domainWhiteList: [ 'http://127.0.0.1:8080', 'http://120.48.74.178:8080' ],
   };
 
   config.jwt = {
