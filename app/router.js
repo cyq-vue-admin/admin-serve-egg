@@ -10,6 +10,7 @@ module.exports = app => {
   router.get('/', controller.home.index);
   router.post('/login', controller.user.login); // 登陆
   router.post('/user/create', auth, controller.user.create); // 创建用户
+  router.post('/user/createAdmin', controller.user.createAdmin); // 创建admin用户
   router.get('/users', auth, controller.user.getUsers); // 用户列表
   router.get('/user', auth, controller.user.getUserById); // 用户findById
   router.get('/getCurrentUser', auth, controller.user.getCurrentUser); // 当前用户信息

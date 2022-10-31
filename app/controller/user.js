@@ -28,6 +28,31 @@ class UserController extends Controller {
     };
   }
 
+  // 创建admin
+  async createAdmin() {
+    const { ctx } = this;
+    const UserService = this.service.user;
+    if (await UserService.findByUserName('admin')) {
+      ctx.throw(422, '用户名已存在');
+    }
+    if (await UserService.findByEmail('admin@qq.com')) {
+      ctx.throw(422, '邮箱已存在');
+    }
+    const user = await UserService.createUser({
+      userName: 'admin',
+      password: 'admin',
+      email: 'admin@qq.com',
+      role: [],
+    }); // 保存数据
+    ctx.body = {
+      code: 200,
+      message: '创建admin成功',
+      data: {
+        ...ctx.helper._.pick(user, [ '_id', 'userName', 'email', 'avatar' ]),
+      },
+    };
+  }
+
   // 登录
   async login() {
     const { ctx, app } = this;
